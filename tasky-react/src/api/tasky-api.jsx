@@ -1,9 +1,14 @@
 export const getTasks = async () => {
-    const  res = await fetch(
-        `http://localhost:8090/api/tasks`
+    const response = await fetch(
+        `http://localhost:8090/api/tasks`, {
+            headers: {
+                'Authorization': window.localStorage.getItem('token')
+            }
+        }
     )
-        return res.json();
+    return response.json();
 };
+
 
 export const addTask = async(data) => {
     const res = await fetch(
@@ -12,6 +17,7 @@ export const addTask = async(data) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': window.localStorage.getItem('token')
             },
             body: JSON.stringify(data)
         }
@@ -19,15 +25,20 @@ export const addTask = async(data) => {
         return res.json();
 };
 
+
 export const deleteTask = async (id) => {
     const res =  fetch(
         `http://localhost:8090/api/tasks/${id}`,
         {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': window.localStorage.getItem('token')
+            }
         }
     )
     return res;
 };
+
 
 export const updateTask = async (data) => {
     const res = await fetch(
@@ -36,12 +47,14 @@ export const updateTask = async (data) => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': window.localStorage.getItem('token')
             },
             body: JSON.stringify(data)
         }
     )
         return res.json();
 };
+
 
 export const login = async (username, password) => {
     console.log("caiu aqui")
