@@ -1,13 +1,13 @@
 export const getTasks = async () => {
     const  res = await fetch(
-        `http://localhost:8080/api/tasks`
+        `http://localhost:8090/api/tasks`
     )
         return res.json();
 };
 
 export const addTask = async(data) => {
     const res = await fetch(
-        `http://localhost:8080/api/tasks`,
+        `http://localhost:8090/api/tasks`,
         {
             method: 'POST',
             headers: {
@@ -21,7 +21,7 @@ export const addTask = async(data) => {
 
 export const deleteTask = async (id) => {
     const res =  fetch(
-        `http://localhost:8080/api/tasks/${id}`,
+        `http://localhost:8090/api/tasks/${id}`,
         {
             method: 'DELETE'
         }
@@ -31,7 +31,7 @@ export const deleteTask = async (id) => {
 
 export const updateTask = async (data) => {
     const res = await fetch(
-        `http://localhost:8080/api/tasks/${data._id}`,
+        `http://localhost:8090/api/tasks/${data._id}`,
         {
             method: 'PUT',
             headers: {
@@ -44,7 +44,8 @@ export const updateTask = async (data) => {
 };
 
 export const login = async (username, password) => {
-    const response = await fetch('http://localhost:8080/api/users', {
+    console.log("caiu aqui")
+    const response = await fetch('http://localhost:8090/api/users', {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -55,7 +56,7 @@ export const login = async (username, password) => {
 };
 
 export const signup = async (username, password) => {
-    const response = await fetch('http://localhost:8080/api/users?action=register', {
+    const response = await fetch('http://localhost:8090/api/users?action=register', {
         headers: {
             'Content-Type': 'application/json'
         },
